@@ -41,7 +41,7 @@ jobs:
                any::sf
                any::ggmap
                any::tigris
-               any::viridis,quietly=TRUE
+               any::viridis
 
       - name: Render document
         uses: quarto-dev/quarto-actions/render@v2
