@@ -1,0 +1,59 @@
+---
+title: "PUBH7462_Assignment8_AFARNUM"
+author: "Ashley Farnum"
+format: html
+editor: visual
+---
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+```{r setup, include = FALSE, echo = FALSE, message=FALSE,warning=FALSE}
+## Load the API key
+api_key <- Sys.getenv("TIDYCENSUS_API_KEY")
+```
+
+
+
+```{r setup, include = FALSE, echo = FALSE, message=FALSE,warning=FALSE}
+library(tidyverse)
+library(gt)
+library(paletteer)
+library(plotly)
+library(tidycensus)
+library(osmdata)
+library(plotly)
+library(ggplot2)
+library(sf)
+library(ggmap)
+library(leaflet)
+library(tigris)
+library(viridis, quietly = TRUE)
+library(leaflet.minicharts)
+```
+
+```{r Chart B, echo=FALSE, message=FALSE, warning=FALSE}
+
+options(tigris_use_cache = TRUE)  #so i don't have to call ACS each time
+
+hennepin_age_plotly<- get_acs(    #making plotly from acs data
+  geography = "tract",
+  variables = "B07009_006E", #Code for degrees obtained
+  state     = "MN",
+  county    = "Hennepin",
+  year      = 2020,
+  geometry  = TRUE,
+  cb        = FALSE,
+  
+) %>% 
+  st_as_sf() %>%   #making sf
+  mutate(tract = str_remove(NAME, "Census Tract ")) %>% 
+  ggplot() +    #ggplot
+    geom_sf(aes(fill = estimate)) + 
+    scale_fill_viridis_c() + 
+    theme_void()
+
+ggplotly(hennepin_age_plotly) %>% #ggplotly 
+  style(hoveron = "fills", source = "hover")
+```
