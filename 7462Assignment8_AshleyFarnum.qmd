@@ -16,7 +16,7 @@ api_key <- Sys.getenv("TIDYCENSUS_API_KEY")
 
 
 
-```{r setup, include = FALSE, echo = FALSE, message=FALSE,warning=FALSE}
+```{r, include = FALSE, echo = FALSE, message=FALSE,warning=FALSE}
 library(tidyverse)
 library(gt)
 library(paletteer)
