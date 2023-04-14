@@ -46,7 +46,7 @@ jobs:
       - name: Render document
         uses: quarto-dev/quarto-actions/render@v2
         env:
-          TIDYCENSUS_API_KEY: ${{ secrets.TIDYCENSUS_API_KEY }}
+          API_KEY: ${{ secrets.TIDYCENSUS_API_KEY }}
         with:
           to: html
           path: 7462Assignment8_AshleyFarnum.qmd
