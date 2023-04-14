@@ -49,7 +49,7 @@ jobs:
           TIDYCENSUS_API_KEY: ${{ secrets.TIDYCENSUS_API_KEY }}
         with:
           to: html
-          path: 7462 Assignment 8_AshleyFarnum.qmd
+          path: 7462Assignment8_AshleyFarnum.qmd
       - name: Setup git config
         run: |
           git config user.name "GitHub Actions Bot"
